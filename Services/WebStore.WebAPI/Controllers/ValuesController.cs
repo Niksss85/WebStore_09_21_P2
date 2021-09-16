@@ -12,6 +12,10 @@ namespace WebStore.WebAPI.Controllers
             .Range(1, 10)
             .Select(i => $"Value-{i}")
             .ToList();
+        public ValuesController()
+        {
+
+        }
 
         [HttpGet]
         public IActionResult Get() => Ok(_Values);
