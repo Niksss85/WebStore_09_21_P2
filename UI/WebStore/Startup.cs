@@ -19,6 +19,8 @@ using WebStore.Services.InCookies;
 using WebStore.Services.InMemory;
 using WebStore.Services.InSQL;
 using WebStore.Interfaces.Services;
+using WebStore.Interfaces.TestAPI;
+using WebStore.WebAPI.Values;
 
 namespace WebStore
 {
@@ -96,6 +98,8 @@ namespace WebStore
                 services.AddSingleton<IProductData, InMemoryProductData>();
             services.AddScoped<IOrderService, SqlOrderService>();
 
+            //services.AddScoped<IValuesService, ValuesClient>();
+            services.AddHttpClient<IValuesService, ValuesClient>(client => client.BaseAddress = new Uri(Configuration["WebAPI"]));
             services.AddControllersWithViews(/*opt => opt.Conventions.Add(new TestControllersConvention())*/)
                .AddRazorRuntimeCompilation();
         }
