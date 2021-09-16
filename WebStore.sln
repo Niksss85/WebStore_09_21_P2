@@ -17,9 +17,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebStore.DAL.Sqlite", "Serv
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebStore", "UI\WebStore\WebStore.csproj", "{098A4283-1D1C-4386-9C3B-EEA0AD365471}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebStoreServices", "Services\WebStoreServices\WebStoreServices.csproj", "{91AD68E4-4E81-40D9-8FCC-6167A30D56EF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebStore.Services", "Services\WebStoreServices\WebStore.Services.csproj", "{91AD68E4-4E81-40D9-8FCC-6167A30D56EF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebStoreInterfaces", "Services\WebStoreInterfaces\WebStoreInterfaces.csproj", "{2FA80803-AD47-4C0B-B06A-FD29FCE33EC2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebStore.Interfaces", "Services\WebStoreInterfaces\WebStore.Interfaces.csproj", "{2FA80803-AD47-4C0B-B06A-FD29FCE33EC2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
