@@ -21,6 +21,7 @@ using WebStore.Services.InSQL;
 using WebStore.Interfaces.Services;
 using WebStore.Interfaces.TestAPI;
 using WebStore.WebAPI.Values;
+using WebStore.WebAPI.Clients.Employees;
 
 namespace WebStore
 {
@@ -92,14 +93,17 @@ namespace WebStore
             //services.AddSingleton<IEmployeesData, InMemoryEmployesData>();  // Объект InMemoryEmployesData создаётся один раз на всё время работы приложения
             services.AddScoped<IEmployeesData, SqlEmployeesData>();
             services.AddScoped<ICartService, InCookiesCartService>();
-            if (Configuration["ProductsDataSource"] == "db")
-                services.AddScoped<IProductData, SqlProductData>();
-            else
-                services.AddSingleton<IProductData, InMemoryProductData>();
+            //if (Configuration["ProductsDataSource"] == "db")
+            //    services.AddScoped<IProductData, SqlProductData>();
+            //else
+            //    services.AddSingleton<IProductData, InMemoryProductData>();
+
             services.AddScoped<IOrderService, SqlOrderService>();
 
             //services.AddScoped<IValuesService, ValuesClient>();
             services.AddHttpClient<IValuesService, ValuesClient>(client => client.BaseAddress = new Uri(Configuration["WebAPI"]));
+            services.AddHttpClient<IEmployeesData, EmployeesClient>(client => client.BaseAddress = new Uri(Configuration["WebAPI"]));
+
             services.AddControllersWithViews(/*opt => opt.Conventions.Add(new TestControllersConvention())*/)
                .AddRazorRuntimeCompilation();
         }
