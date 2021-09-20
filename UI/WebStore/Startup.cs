@@ -99,10 +99,13 @@ namespace WebStore
             //    services.AddSingleton<IProductData, InMemoryProductData>();
 
             services.AddScoped<IOrderService, SqlOrderService>();
-
+            services.AddHttpClient("WebStoreApi", client => client.BaseAddress = new Uri(Configuration["WebAPI"]))
+               .AddTypedClient<IValuesService, ValuesClient>()
+               .AddTypedClient<IEmployeesData, EmployeesClient>()
+               ;
             //services.AddScoped<IValuesService, ValuesClient>();
-            services.AddHttpClient<IValuesService, ValuesClient>(client => client.BaseAddress = new Uri(Configuration["WebAPI"]));
-            services.AddHttpClient<IEmployeesData, EmployeesClient>(client => client.BaseAddress = new Uri(Configuration["WebAPI"]));
+            //services.AddHttpClient<IValuesService, ValuesClient>(client => client.BaseAddress = new Uri(Configuration["WebAPI"]));
+            //services.AddHttpClient<IEmployeesData, EmployeesClient>(client => client.BaseAddress = new Uri(Configuration["WebAPI"]));
 
             services.AddControllersWithViews(/*opt => opt.Conventions.Add(new TestControllersConvention())*/)
                .AddRazorRuntimeCompilation();
