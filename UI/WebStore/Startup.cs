@@ -94,7 +94,7 @@ namespace WebStore
             services.AddScoped<IEmployeesData, SqlEmployeesData>();
             services.AddScoped<ICartService, InCookiesCartService>();
             //if (Configuration["ProductsDataSource"] == "db")
-            //    services.AddScoped<IProductData, SqlProductData>();
+            services.AddScoped<IProductData, SqlProductData>();
             //else
             //    services.AddSingleton<IProductData, InMemoryProductData>();
 
