@@ -15,7 +15,7 @@ namespace WebStore.WebAPI.Clients.Products
 {
     public class ProductsClient:BaseClient, IProductData
     {
-        public ProductsClient(HttpClient Client, string Address):base(Client, "api/products")
+        public ProductsClient(HttpClient Client):base(Client, "api/products")
         {
 
         }
@@ -34,7 +34,7 @@ namespace WebStore.WebAPI.Clients.Products
 
         public Product GetProductById(int Id)
         {
-            var product = Get<ProductDTO>($"{Address}{Id}");
+            var product = Get<ProductDTO>($"{Address}/{Id}");
             return product.FromDTO();
         }
 

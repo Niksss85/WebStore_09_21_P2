@@ -22,6 +22,7 @@ using WebStore.Interfaces.Services;
 using WebStore.Interfaces.TestAPI;
 using WebStore.WebAPI.Values;
 using WebStore.WebAPI.Clients.Employees;
+using WebStore.WebAPI.Clients.Products;
 
 namespace WebStore
 {
@@ -94,7 +95,7 @@ namespace WebStore
             services.AddScoped<IEmployeesData, SqlEmployeesData>();
             services.AddScoped<ICartService, InCookiesCartService>();
             //if (Configuration["ProductsDataSource"] == "db")
-            services.AddScoped<IProductData, SqlProductData>();
+            //services.AddScoped<IProductData, SqlProductData>();
             //else
             //    services.AddSingleton<IProductData, InMemoryProductData>();
 
@@ -102,6 +103,7 @@ namespace WebStore
             services.AddHttpClient("WebStoreApi", client => client.BaseAddress = new Uri(Configuration["WebAPI"]))
                .AddTypedClient<IValuesService, ValuesClient>()
                .AddTypedClient<IEmployeesData, EmployeesClient>()
+               .AddTypedClient<IProductData, ProductsClient>()
                ;
             //services.AddScoped<IValuesService, ValuesClient>();
             //services.AddHttpClient<IValuesService, ValuesClient>(client => client.BaseAddress = new Uri(Configuration["WebAPI"]));
