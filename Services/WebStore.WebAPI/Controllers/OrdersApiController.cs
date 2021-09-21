@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 using WebStore.Domain.DTO;
 using WebStore.Interfaces.Services;
 
-namespace WebStore.WebAPI.Controllers
-{
+namespace WebStore.WebAPI.Controllers { 
 
     [ApiController]
     [Route("api/orders")]
@@ -23,7 +22,7 @@ namespace WebStore.WebAPI.Controllers
         public async Task<IActionResult> GetUserOrders(string UserName)
         {
             var orders = await _OrderService.GetUserOrder(UserName);
-            return Ok(ordersToDTO());
+            return Ok(orders.ToDTO());
         }
         [HttpGet("{id:int}")] 
         public async  Task<IActionResult> GetOrderById(int id)
