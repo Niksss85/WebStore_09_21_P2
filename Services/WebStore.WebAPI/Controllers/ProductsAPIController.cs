@@ -6,13 +6,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using WebStore.Domain;
 using WebStore.Domain.DTO;
+using WebStore.Interfaces;
 using WebStore.Interfaces.Services;
 
 namespace WebStore.WebAPI.Controllers
 {
 
     [ApiController]
-    [Route("api/products")]
+    [Route(WebAPIAddresses.Products)]
     public class ProductsAPIController : ControllerBase
     {
         private readonly IProductData _ProductData;
