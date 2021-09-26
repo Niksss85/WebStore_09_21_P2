@@ -85,7 +85,7 @@ namespace WebStore
             });
 
             //services.AddSingleton<IEmployeesData, InMemoryEmployesData>();  // Объект InMemoryEmployesData создаётся один раз на всё время работы приложения
-            services.AddScoped<IEmployeesData, SqlEmployeesData>();
+            //services.AddScoped<IEmployeesData, SqlEmployeesData>();
             services.AddScoped<ICartService, InCookiesCartService>();
             //if (Configuration["ProductsDataSource"] == "db")
             //services.AddScoped<IProductData, SqlProductData>();
