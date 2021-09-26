@@ -8,14 +8,15 @@ using System.Threading.Tasks;
 using WebStore.Domain;
 using WebStore.Domain.DTO;
 using WebStore.Domain.Entities;
+using WebStore.Interfaces;
 using WebStore.Interfaces.Services;
-using WebStore.WebAPI.Base;
+using WebStore.WebAPI.Clients.Base;
 
 namespace WebStore.WebAPI.Clients.Products
 {
     public class ProductsClient:BaseClient, IProductData
     {
-        public ProductsClient(HttpClient Client):base(Client, "api/products")
+        public ProductsClient(HttpClient Client):base(Client, WebAPIAddresses.Products)
         {
 
         }
