@@ -87,6 +87,7 @@ namespace WebStore.WebAPI
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebStore.WebAPI", Version = "v1" });
+                c.IncludeXmlComments("WebStore.WebAPI.xml");
             });
         }
 
