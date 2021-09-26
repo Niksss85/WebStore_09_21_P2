@@ -40,17 +40,10 @@ namespace WebStore
 
 
             services.AddIdentity<User, Role>()
+               .AddIdentityWebStoreWebAPIClients()
                .AddDefaultTokenProviders();
-            services.AddHttpClient("WebStoreAPIIdentity", client => client.BaseAddress = new(Configuration["WebAPI"]))
-               .AddTypedClient<IUserStore<User>, UsersClient>()
-               .AddTypedClient<IUserRoleStore<User>, UsersClient>()
-               .AddTypedClient<IUserPasswordStore<User>, UsersClient>()
-               .AddTypedClient<IUserEmailStore<User>, UsersClient>()
-               .AddTypedClient<IUserPhoneNumberStore<User>, UsersClient>()
-               .AddTypedClient<IUserTwoFactorStore<User>, UsersClient>()
-               .AddTypedClient<IUserClaimStore<User>, UsersClient>()
-               .AddTypedClient<IUserLoginStore<User>, UsersClient>()
-               .AddTypedClient<IRoleStore<Role>, RolesClient>();
+
+           // services.AddIdentityWebStoreWebAPIClients();
 
             services.Configure<IdentityOptions>(opt =>
             {
@@ -85,7 +78,7 @@ namespace WebStore
             });
 
             //services.AddSingleton<IEmployeesData, InMemoryEmployesData>();  // Объект InMemoryEmployesData создаётся один раз на всё время работы приложения
-            //services.AddScoped<IEmployeesData, SqlEmployeesData>();
+          //  services.AddScoped<IEmployeesData, SqlEmployeesData>();
             services.AddScoped<ICartService, InCookiesCartService>();
             //if (Configuration["ProductsDataSource"] == "db")
             //services.AddScoped<IProductData, SqlProductData>();
