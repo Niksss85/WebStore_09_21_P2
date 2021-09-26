@@ -345,3 +345,4 @@ healthchecksdb
 /UI/WebStore/wwwroot/css/site.css
 /UI/WebStore/wwwroot/lib
 /Services/WebStore.WebAPI/WebStore.WebAPI.xml
+/Common/WebStore.Domain/WebStore.Domain.xml
