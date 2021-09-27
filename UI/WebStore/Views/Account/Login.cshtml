@@ -1,6 +1,11 @@
-﻿@model WebStore.Domain.ViewModels.LoginViewModel
+﻿@using Microsoft.Extensions.Logging
+@using WebStore.Controllers
+@model WebStore.Domain.ViewModels.LoginViewModel
+@inject ILogger<AccountController> Logger
+
 @{
     ViewData["Title"] = "Вход в систему";
+    Logger.LogInformation("Сообщение из представления");
 }
 
 <section id="form">
