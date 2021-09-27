@@ -25,7 +25,7 @@ namespace WebStore.WebAPI
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration configuration)//j
         {
             Configuration = configuration;
         }
