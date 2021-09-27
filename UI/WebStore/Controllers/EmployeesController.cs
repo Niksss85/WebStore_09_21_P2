@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
 using Microsoft.AspNetCore.Authorization;
@@ -87,15 +88,30 @@ namespace WebStore.Controllers
                 Patronymic = Model.Patronymic,
                 Age = Model.Age,
             };
+            try 
+            {
+                if (employee.Id == 0)
+                {
+                    _EmployeesData.Add(employee);
+                    _Logger.LogInformation("Создание нового сотрудника id:{0} завершено", Model.Id);
+                }
+                else
+                {
+                    _EmployeesData.Update(employee);
+                    _Logger.LogInformation("Редактирование сотрудника id:{0} завершено", Model.Id);
+                }
 
-            if (employee.Id == 0)
-                _EmployeesData.Add(employee);
-            else
-                _EmployeesData.Update(employee);
 
-            _Logger.LogInformation("Редактирование сотрудника id:{0} завершено", Model.Id);
+                return RedirectToAction("Index");
 
-            return RedirectToAction("Index");
+            }
+            catch(Exception error)
+            {
+                _Logger.LogError(error, "Ошибка при редактировании сотрудника {0}", Model.Id);
+                throw;
+
+            }
+
         }
 
         [Authorize(Roles = Role.Administrators)]
