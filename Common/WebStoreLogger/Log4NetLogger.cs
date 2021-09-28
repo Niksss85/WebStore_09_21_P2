@@ -1,14 +1,13 @@
-﻿using log4net;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.ComponentModel;
 using System.Reflection;
-using System.Text;
 using System.Xml;
+using log4net;
+using Microsoft.Extensions.Logging;
 
-namespace WebStoreLogger
+namespace WebStore.Logger
 {
+    public class Log4NetLogger : ILogger
     {
         private readonly ILog _Log;
 
@@ -22,8 +21,39 @@ namespace WebStoreLogger
             _Log = LogManager.GetLogger(logger_repository.Name, Category);
 
             log4net.Config.XmlConfigurator.Configure(logger_repository, Configuration);
-    }
-    {
+        }
+
+        public IDisposable BeginScope<TState>(TState state) => null;
+
+        public bool IsEnabled(LogLevel Level) => Level switch
+        {
+            LogLevel.None => false,
+            LogLevel.Trace => _Log.IsDebugEnabled,
+            LogLevel.Debug => _Log.IsDebugEnabled,
+            LogLevel.Information => _Log.IsInfoEnabled,
+            LogLevel.Warning => _Log.IsWarnEnabled,
+            LogLevel.Error => _Log.IsErrorEnabled,
+            LogLevel.Critical => _Log.IsFatalEnabled,
+            _ => throw new InvalidEnumArgumentException(nameof(Level), (int)Level, typeof(LogLevel))
+        };
+
+        public void Log<TState>(
+            LogLevel Level,
+            EventId Id,
+            TState State,
+            Exception Error,
+            Func<TState, Exception, string> Formatter)
+        {
+            if (Formatter is null)
+                throw new ArgumentNullException(nameof(Formatter));
+
+            if (!IsEnabled(Level)) return;
+
+            var log_message = Formatter(State, Error);
+            if (string.IsNullOrEmpty(log_message) && Error is null) return;
+
+            switch (Level)
+            {
                 default: throw new ArgumentOutOfRangeException(nameof(Level), Level, null);
                 case LogLevel.None: break;
 
@@ -48,9 +78,6 @@ namespace WebStoreLogger
                     _Log.Fatal(log_message, Error);
                     break;
             }
+        }
     }
-    public class Log4NetLogger
-    {
-    }
-
 }
