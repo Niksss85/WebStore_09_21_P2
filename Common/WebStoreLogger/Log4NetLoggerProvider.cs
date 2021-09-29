@@ -3,7 +3,7 @@ using System.Collections.Concurrent;
 using System.Xml;
 using WebStore.Logger;
 
-namespace WebStoreLogger
+namespace WebStore.Logger
 {
     public class Log4NetLoggerProvider : ILoggerProvider
     {

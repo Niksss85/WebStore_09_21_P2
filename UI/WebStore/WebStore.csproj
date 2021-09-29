@@ -5,14 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="log4net.config" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="log4net.config" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
     <PackageReference Include="BuildBundlerMinifier" Version="3.2.449" />
     <PackageReference Include="Mapster.DependencyInjection" Version="1.0.0" />
@@ -27,10 +19,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Common\WebStore.Domain\WebStore.Domain.csproj" />
+    <ProjectReference Include="..\..\Common\WebStoreLogger\WebStore.Logger.csproj" />
     <ProjectReference Include="..\..\Services\WebStore.DAL.Sqlite\WebStore.DAL.Sqlite.csproj" />
     <ProjectReference Include="..\..\Services\WebStore.DAL\WebStore.DAL.csproj" />
     <ProjectReference Include="..\..\Services\WebStore.WebAPI.Clients\WebStore.WebAPI.Clients.csproj" />
-    <ProjectReference Include="..\..\Services\WebStore.WebAPI\WebStore.WebAPI.csproj" />
     <ProjectReference Include="..\..\Services\WebStoreInterfaces\WebStore.Interfaces.csproj" />
     <ProjectReference Include="..\..\Services\WebStoreServices\WebStore.Services.csproj" />
   </ItemGroup>
