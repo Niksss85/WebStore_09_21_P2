@@ -27,6 +27,7 @@ using WebStore.WebAPI.Clients.Orders;
 using WebStore.WebAPI.Clients.Identity;
 using Microsoft.Extensions.Logging;
 using WebStore.Logger;
+using WebStore.Services.Services;
 
 namespace WebStore
 {
@@ -80,8 +81,9 @@ namespace WebStore
             });
 
             //services.AddSingleton<IEmployeesData, InMemoryEmployesData>();  // Объект InMemoryEmployesData создаётся один раз на всё время работы приложения
-          //  services.AddScoped<IEmployeesData, SqlEmployeesData>();
-            services.AddScoped<ICartService, InCookiesCartService>();
+            //  services.AddScoped<IEmployeesData, SqlEmployeesData>();
+            services.AddScoped<ICartStore, InCookiesCartStore>();
+            services.AddScoped<ICartService, CartService>();
             //if (Configuration["ProductsDataSource"] == "db")
             //services.AddScoped<IProductData, SqlProductData>();
             //else
