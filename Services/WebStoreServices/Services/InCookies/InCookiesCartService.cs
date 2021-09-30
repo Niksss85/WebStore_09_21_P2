@@ -1,13 +1,12 @@
 ﻿using System.Linq;
-
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Http.Features;
 using Newtonsoft.Json;
 using WebStore.Domain;
 using WebStore.Domain.Entities;
 using WebStore.Domain.ViewModels;
 using WebStore.Infrastructure.Mapping;
 using WebStore.Interfaces.Services;
+
 
 namespace WebStore.Services.InCookies
 {
@@ -73,7 +72,7 @@ namespace WebStore.Services.InCookies
             var cart = Cart;
 
             var item = cart.Items.FirstOrDefault(i => i.ProductId == id);
-            if(item is null) return;
+            if (item is null) return;
 
             if (item.Quantity > 0)
                 item.Quantity--;
