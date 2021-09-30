@@ -8,7 +8,7 @@ using WebStore.Infrastructure.Mapping;
 using WebStore.Interfaces.Services;
 
 
-namespace WebStore.Services.InCookies
+namespace WebStore.Services.Services.InCookies
 {
     public class InCookiesCartService : ICartService
     {
