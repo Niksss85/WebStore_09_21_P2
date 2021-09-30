@@ -8,6 +8,7 @@ using WebStore.Domain.Entities;
 using WebStore.Domain.ViewModels;
 using WebStore.Interfaces.Services;
 using WebStore.Services;
+using WebStore.Services.Services;
 using Assert = Xunit.Assert;
 
 namespace WebStore.Services.Tests.Services
