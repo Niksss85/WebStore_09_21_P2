@@ -65,6 +65,7 @@ namespace WebStore.Controllers
             return View();
         }
         #region Webapi
+        public IActionResult GetCartView() => ViewComponent("Cart");
         public IActionResult AddAPI(int id)
         {
             _CartService.Add(id);
