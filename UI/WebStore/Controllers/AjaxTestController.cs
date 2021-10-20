@@ -47,6 +47,6 @@ namespace WebStore.Controllers
             });
         }
 
-        //public IActionResult Chat() => View();
+        public IActionResult Chat() => View();
     }
 }
