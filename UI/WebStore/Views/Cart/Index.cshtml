@@ -39,21 +39,21 @@
                                        asp-route-id="@product.Id"
                                        data-id="@product.Id"
                                        class="cart_quantity_up">
-                                         +
+                                        +
                                     </a>
                                     <input class="cart_quantity_input" type="text" name="quantity" value="@quantity" autocomplete="off" size="2">
-                                    <a asp-controller="Cart" 
+                                    <a asp-controller="Cart"
                                        asp-action="Decrement"
                                        asp-route-id="@product.Id"
                                        data-id="@product.Id"
                                        class="cart_quantity_down">
-                                         -
+                                        -
                                     </a>
                                 </div>
                             </td>
                             <td class="cart_total">
                                 <p class="cart_total_price" data-price="@(product.Price * quantity)">
-                                  @((product.Price * quantity).ToString("C"))
+                                    @((product.Price * quantity).ToString("C"))
                                 </p>
                             </td>
                             <td class="cart_delete">
@@ -67,7 +67,7 @@
                             </td>
                         </tr>
                     }
-                  
+
                 </tbody>
             </table>
         </div>
@@ -81,6 +81,11 @@
             <p>Выберите, есть ли у вас код скидки или бонусные баллы, которые вы хотите использовать или хотите сделать скуидку на доставку.</p>
         </div>
         <partial name="Partial/_CheckOut" model="Model.Order"
-                 view-data="@(new ViewDataDictionary(ViewData) { { "TotalPrice", Model.Cart.TotalPrice } })"/>
+                 view-data="@(new ViewDataDictionary(ViewData) { { "TotalPrice", Model.Cart.TotalPrice } })" />
     </div>
 </section><!--/#do_action-->
+
+@section Scripts
+{
+    <partial name="_ValidationScriptsPartial" />
+}
